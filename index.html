@@ -90,18 +90,18 @@ Telefon: tekan dan tahan butang arah. Tekan LOMPAT untuk melompat.</p>
   <input id="playerName" maxlength="24" placeholder="Contoh: Aina" autocomplete="off">
   <p><strong>Pilih avatar</strong></p>
   <div class="avatar-grid" id="avatarGrid">
-    <button class="avatar selected" data-avatar="🧑🏻‍🚀">🧑🏻‍🚀</button>
-    <button class="avatar" data-avatar="🧙🏻‍♀️">🧙🏻‍♀️</button>
-    <button class="avatar" data-avatar="🦸🏽‍♂️">🦸🏽‍♂️</button>
-    <button class="avatar" data-avatar="🤖">🤖</button>
-    <button class="avatar" data-avatar="🐱">🐱</button>
-    <button class="avatar" data-avatar="🦊">🦊</button>
-    <button class="avatar" data-avatar="🐼">🐼</button>
-    <button class="avatar" data-avatar="🐸">🐸</button>
+    <button type="button" class="avatar selected" data-avatar="🧑🏻‍🚀">🧑🏻‍🚀</button>
+    <button type="button" class="avatar" data-avatar="🧙🏻‍♀️">🧙🏻‍♀️</button>
+    <button type="button" class="avatar" data-avatar="🦸🏽‍♂️">🦸🏽‍♂️</button>
+    <button type="button" class="avatar" data-avatar="🤖">🤖</button>
+    <button type="button" class="avatar" data-avatar="🐱">🐱</button>
+    <button type="button" class="avatar" data-avatar="🦊">🦊</button>
+    <button type="button" class="avatar" data-avatar="🐼">🐼</button>
+    <button type="button" class="avatar" data-avatar="🐸">🐸</button>
   </div>
-  <button id="startBtn">Mula Pengembaraan 🚀</button>
+  <button id="startBtn" type="button" onclick="startWithProfile()">Mula Pengembaraan 🚀</button>
   <p class="small">Leaderboard memaparkan nama paparan, avatar dan pencapaian. Elakkan memasukkan maklumat peribadi sensitif.</p>
-  <p class="status" id="firebaseStatus">Menyemak sambungan leaderboard...</p>
+  <p class="status" id="firebaseStatus">Leaderboard setempat sedia digunakan.</p>
  </div>
 </div>
 
@@ -404,9 +404,4 @@ function leaderboardHtml(rows){
  });
  return html+"</tbody></table>";
 }
-function renderLeaderboard(targetId){
- $(targetId).innerHTML=leaderboardHtml(readLeaderboard());
-}
-function finishGame(success){
- if(sessionFinished)return;
- sessi
+func
