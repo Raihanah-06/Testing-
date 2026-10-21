@@ -12,4 +12,201 @@ html = r'''<!DOCTYPE html>
 button,input{font:inherit} button{cursor:pointer;border:0;border-radius:13px;padding:13px 17px;font-weight:800;color:#071126;background:linear-gradient(135deg,var(--cyan),#9df7ff);box-shadow:0 5px 0 #1c8da9;transition:.15s}button:hover{transform:translateY(-2px);filter:brightness(1.08)}button:disabled{opacity:.4;cursor:not-allowed;transform:none} .secondary{background:linear-gradient(135deg,#263d67,#38547f);color:var(--white);box-shadow:0 5px 0 #101b31}.pink{background:linear-gradient(135deg,var(--pink),#ff9bc9);box-shadow:0 5px 0 #a52b67}.gold{background:linear-gradient(135deg,var(--gold),#fff0a1);box-shadow:0 5px 0 #a87818}
 .app{max-width:1150px;margin:auto;padding:20px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}.brand{display:flex;align-items:center;gap:12px}.logo{width:50px;height:50px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,var(--cyan),var(--pink));font-size:26px;box-shadow:0 0 25px #54e7ff55}.brand h1{font-size:clamp(17px,3vw,25px);margin:0;letter-spacing:.5px}.brand small{color:var(--cyan);letter-spacing:2px;font-weight:800}.stats{display:flex;gap:8px;flex-wrap:wrap}.stat{background:#102143;border:1px solid #2d4774;border-radius:12px;padding:9px 12px;font-weight:800}.stat span{color:var(--gold)}
 .screen{display:none;animation:fade .3s ease}.screen.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.hero{border:1px solid #345080;border-radius:24px;padding:clamp(22px,5vw,48px);background:linear-gradient(120deg,#102448ee,#251d4dee),repeating-linear-gradient(135deg,transparent 0 20px,#ffffff05 20px 22px);position:relative;overflow:hidden}.hero:after{content:"✦";position:absolute;font-size:190px;color:#54e7ff13;right:5%;top:0}.eyebrow{color:var(--cyan);font-size:12px;font-weight:900;letter-spacing:3px}.hero h2{font-size:clamp(30px,6vw,58px);line-height:1.03;margin:12px 0}.hero h2 em{font-style:normal;color:var(--gold)}.hero p{max-width:680px;color:#d4e1f7;line-height:1.7}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:10px;flex-wrap:wrap;margin:25px 0 13px}.section-title h2{margin:0}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:linear-gradient(145deg,#14284b,#0d1b35);border:1px solid #2a426c;border-radius:18px;padding:18px}.zone{position:relative;overflow:hidden;min-height:190px}.zone .symbol{font-size:36px}.zone h3{margin:8px 0}.zone p{color:var(--muted);margin:0 0 14px}.zone.locked{filter:saturate(.45)}.lock{color:var(--gold);font-weight:800}.avatar-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:15px 0}.avatar{font-size:30px;background:#122449;border:2px solid #2b4775;border-radius:15px;padding:15px 5px;text-align:center;color:white;box-shadow:none}.avatar.selected{border-color:var(--cyan);background:#16405b;box-shadow:0 0 0 2px #54e7ff33}.avatar small{display:block;font-size:12px;margin-top:5px}.field{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.field input{background:#08152b;color:white;border:1px solid #36517e;border-radius:12px;padding:13px;min-width:220px;flex:1}.level-list{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}.level{border:1px solid #36517e;background:#0a1931;color:#fff;border-radius:12px;padding:12px 5px;text-align:center;box-shadow:none}.level small{display:block;color:var(--muted);margin-top:5px}.level.current{border-color:var(--gold);background:#3c3150}.question-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.progress{height:10px;background:#071126;border-radius:99px;overflow:hidden;margin:14px 0 22px;border:1px solid #2d4774}.progress div{height:100%;background:linear-gradient(90deg,var(--cyan),var(--pink));width:0;transition:width .3s}.question{font-size:clamp(20px,3vw,29px);line-height:1.4;margin:18px 0}.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.option{background:#172b50;border:1px solid #3a5686;color:var(--white);text-align:left;box-shadow:none;min-height:65px;display:flex;gap:10px;align-items:center}.option b{display:grid;place-items:center;width:31px;height:31px;background:#08172f;color:var(--cyan);border-radius:9px;flex-shrink:0}.option.correct{border-color:var(--green);background:#104237}.option.wrong{border-color:var(--red);background:#49253d}.feedback{margin-top:16px;padding:15px;border-radius:14px;background:#0a1a31;border:1px solid #345080;line-height:1.6}.feedback.good{border-color:var(--green)}.feedback.bad{border-color:var(--red)}.feedback strong{display:block;font-size:18px;margin-bottom:5px}.hidden{display:none!important}.result-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.result-stat{padding:16px;background:#0a1931;border:1px solid #2b426d;border-radius:14px}.result-stat strong{display:block;font-size:25px;color:var(--gold)}.badges{display:flex;gap:10px;flex-wrap:wrap}.badge{background:#332d52;border:1px solid #7463a4;border-radius:14px;padding:12px 14px}.badge span{font-size:23px;display:block}.notice{border:1px solid #39557f;background:#0c1c37;padding:14px;border-radius:14px;color:#d7e4f9}.footer{text-align:center;color:#8295b7;font-size:12px;padding:28px 0 10px}.toast{color:var(--gold);font-weight:800}.small{font-size:13px}
-@media
+@media(max-width:650px){.app{padding:12px}.grid,.options{grid-template-columns:1fr}.avatar-grid{grid-template-columns:repeat(2,1fr)}.level-list{grid-template-columns:repeat(2,1fr)}.result-grid{grid-template-columns:repeat(2,1fr)}.hero:after{font-size:100px}.stat{font-size:13px;padding:8px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+ <div class="brand"><div class="logo">✦</div><div><small>NEXUS ACADEMY</small><h1>MISI MATEMATIK 5</h1></div></div>
+ <div class="stats"><div class="stat">⚡ XP <span id="topXP">0</span></div><div class="stat">❤️ <span id="topLives">3</span></div><div class="stat">💎 <span id="topCrystals">0/4</span></div></div>
+</header>
+<main>
+<section id="home" class="screen active">
+ <div class="hero"><div class="eyebrow">OPERASI MENYELAMAT NEXUS // TAHUN 5</div><h2>LEGASI<br><em>KOTA NOMBOR</em></h2><p>Sebuah sistem pintar kehilangan empat Kristal Matematik. Pilih identiti ejen anda, teroka zon futuristik dan pulihkan kuasa NEXUS melalui pecahan, perpuluhan, peratus dan misi KBAT.</p><div class="actions"><button onclick="showScreen('profile')">🚀 MULA MISI</button><button class="secondary" onclick="showScreen('map')">🗺️ PETA DUNIA</button><button class="secondary" onclick="showScreen('achievements')">🏅 PENCAPAIAN</button><button class="secondary" onclick="showScreen('leaderboard')">🏆 LEADERBOARD</button></div></div>
+ <div class="section-title"><h2>📡 Taklimat NEXUS</h2><span class="muted small">4 zon · 16 aras · Final Boss</span></div>
+ <div class="grid"><div class="card"><h3>🎯 Objektif Operasi</h3><p class="muted">Kumpulkan empat kristal dengan melengkapkan setiap zon. Setiap aras mempunyai lima soalan unik.</p></div><div class="card"><h3>⚡ Sistem Ejen</h3><p class="muted">Jawapan betul +100 XP, bonus pantas, kombo lima jawapan dan tiga nyawa bagi setiap percubaan aras.</p></div></div>
+</section>
+<section id="profile" class="screen">
+ <div class="section-title"><h2>🪪 Profil Ejen</h2><button class="secondary" onclick="showScreen('home')">← Kembali</button></div>
+ <div class="card"><label for="playerName">Nama ejen</label><div class="field" style="margin-top:8px"><input id="playerName" maxlength="28" placeholder="Masukkan nama anda"><span class="muted small">Pilih avatar ejen original</span></div>
+ <div class="avatar-grid" id="avatarGrid"></div><button onclick="startNewGame()">SAHKAN IDENTITI & MULA</button></div>
+ <div class="notice" style="margin-top:14px">Petua: Jawab dengan teliti. Jika nyawa habis, anda boleh cuba semula aras semasa tanpa kehilangan kemajuan zon yang telah selesai.</div>
+</section>
+<section id="map" class="screen">
+ <div class="section-title"><div><h2>🗺️ Peta Dunia NEXUS</h2><p class="muted">Pulihkan kristal mengikut urutan zon.</p></div><button class="secondary" onclick="showScreen('home')">← Menu utama</button></div>
+ <div id="mapSummary" class="notice"></div><div id="zoneGrid" class="grid" style="margin-top:14px"></div>
+ <div id="bossEntry" class="card hidden" style="margin-top:14px"><h2>👾 FINAL BOSS — MASTER OF NUMBERS</h2><p class="muted">Empat kristal telah dipulihkan. Buktikan penguasaan KBAT anda: sekurang-kurangnya 4 daripada 5 jawapan betul.</p><button class="gold" onclick="startBoss()">CABAR FINAL BOSS</button></div>
+</section>
+<section id="game" class="screen">
+ <div class="question-head"><div><div class="eyebrow" id="gameEyebrow">ZON 1 // ARAS 1</div><h2 id="gameTitle">Akademi Pecahan</h2></div><button class="secondary" onclick="leaveMission()">Ⅱ Jeda / Peta</button></div>
+ <div class="stats"><div class="stat">⚡ XP <span id="gameXP">0</span></div><div class="stat">❤️ <span id="gameLives">3</span></div><div class="stat">🔥 Kombo <span id="gameCombo">0</span></div><div class="stat">⏱️ <span id="timer">0:00</span></div></div>
+ <div class="progress"><div id="progressBar"></div></div><div class="question-head"><span id="questionCount" class="muted">Soalan 1/5</span><span id="levelTag" class="toast">REKRUT</span></div>
+ <div class="card" style="margin-top:12px"><div class="question" id="questionText"></div><div class="options" id="options"></div><div id="feedback" class="feedback hidden" aria-live="polite"></div><div class="actions"><button id="nextBtn" class="hidden" onclick="nextQuestion()">SOALAN SETERUSNYA →</button><button id="retryBtn" class="pink hidden" onclick="retryLevel()">🔄 CUBA SEMULA ARAS</button></div></div>
+</section>
+<section id="achievements" class="screen">
+ <div class="section-title"><h2>🏅 Pencapaian Ejen</h2><button class="secondary" onclick="showScreen('home')">← Menu utama</button></div><div class="card"><p class="muted">Lencana diperoleh akan menyala selepas misi berkaitan diselesaikan.</p><div id="badgeList" class="badges"></div></div>
+</section>
+<section id="leaderboard" class="screen">
+ <div class="section-title"><h2>🏆 Leaderboard Peranti Ini</h2><button class="secondary" onclick="showScreen('home')">← Menu utama</button></div><div class="card"><p class="muted">Rekod disimpan dalam pelayar/peranti ini sahaja. Tiada data dihantar ke pelayan.</p><div id="leaderList"></div><button class="secondary" onclick="clearLeaderboard()" style="margin-top:12px">Padam rekod peranti</button></div>
+</section>
+<section id="results" class="screen">
+ <div class="hero"><div class="eyebrow">LAPORAN OPERASI NEXUS</div><h2 id="resultHeading">MISI SELESAI!</h2><p id="motivation"></p></div>
+ <div class="section-title"><h2>📊 Keputusan Ejen</h2></div><div class="result-grid" id="resultStats"></div>
+ <div class="section-title"><h2>🏅 Lencana Diperoleh</h2></div><div id="resultBadges" class="badges"></div>
+ <div class="actions"><button onclick="showScreen('map')">🗺️ KEMBALI KE PETA</button><button class="secondary" onclick="showScreen('achievements')">LIHAT PENCAPAIAN</button><button class="pink" onclick="resetAll()">MULA PERMAINAN BAHARU</button></div>
+</section>
+</main><div class="footer">NEXUS // Belajar, berfikir, berjaya. · Watak dan dunia original untuk pembelajaran.</div>
+</div>
+<script>
+const zones=[
+ {name:"Akademi Pecahan",short:"AKADEMI PECAHAN",symbol:"🔷",desc:"Buka kod pecahan dan kuasai bahagian daripada keseluruhan.",crystal:"Kristal Pecahan",color:"#54e7ff"},
+ {name:"Bandar Perpuluhan",short:"BANDAR PERPULUHAN",symbol:"🌆",desc:"Navigasi bandar digital dengan nombor perpuluhan.",crystal:"Kristal Perpuluhan",color:"#ff5ca8"},
+ {name:"Kota Peratus",short:"KOTA PERATUS",symbol:"🏙️",desc:"Tafsir diskaun, peratus dan data kehidupan sebenar.",crystal:"Kristal Peratus",color:"#ffd166"},
+ {name:"Makmal KBAT",short:"MAKMAL KBAT",symbol:"🧪",desc:"Analisis petunjuk dan pilih strategi penyelesaian terbaik.",crystal:"Kristal KBAT",color:"#7cf7b2"}
+];
+const levels=["REKRUT","EJEN","PAKAR","MASTER / BOSS"];
+const avatars=[["🛰️","Nova"],["🦊","Vektor"],["🐯","Komet"],["🤖","Pixel"]];
+const Q=(q,opts,a,exp)=>({q,opts,a,exp});
+const bank=[
+[
+[
+Q("Apakah pecahan yang mewakili 3 bahagian daripada 8 bahagian yang sama besar? ",["3/8","8/3","3/5","5/8"],0,"Pecahan ialah bahagian dipilih dibahagi jumlah bahagian: 3/8."),
+Q("Pecahan manakah yang sama nilai dengan 1/2?",["2/3","3/6","2/5","4/6"],1,"1/2 × 3/3 = 3/6."),
+Q("Manakah pecahan yang paling besar?",["1/4","3/4","2/4","1/2"],1,"Penyebut sama, jadi pembilang paling besar menunjukkan pecahan paling besar."),
+Q("Tulis satu perdua dalam bentuk angka.",["1/3","2/1","1/2","1/4"],2,"Satu perdua ditulis sebagai 1/2."),
+Q("Sebuah pizza dibahagi kepada 6 bahagian sama. Ali makan 2 bahagian. Apakah pecahan yang dimakan?",["2/6","6/2","2/4","4/6"],0,"Dua daripada enam bahagian ialah 2/6.")
+],
+[
+Q("Kira 1/4 + 2/4.",["3/8","3/4","2/4","1/2"],1,"Penyebut sama: tambah pembilang 1 + 2 = 3, jadi 3/4."),
+Q("Kira 5/8 − 2/8.",["3/8","3/16","7/8","2/8"],0,"Tolak pembilang: 5 − 2 = 3, jadi 3/8."),
+Q("Yang manakah lebih kecil?",["2/3","1/3","Kedua-duanya sama","Tidak boleh ditentukan"],1,"Penyebut sama; 1/3 lebih kecil daripada 2/3."),
+Q("Satu reben 1 meter dipotong kepada 4 bahagian sama. Panjang satu bahagian ialah…",["1/2 m","1/3 m","1/4 m","4 m"],2,"Satu daripada empat bahagian ialah 1/4 meter."),
+Q("Mira membaca 2/5 buku pada Isnin dan 1/5 pada Selasa. Berapa bahagian buku telah dibaca?",["3/10","2/5","3/5","1/5"],2,"2/5 + 1/5 = 3/5.")
+],
+[
+Q("Kek dipotong kepada 8 bahagian. Danial makan 3/8 dan adiknya makan 2/8. Berapa bahagian kek yang tinggal?",["5/8","3/8","2/8","1/8"],1,"Jumlah dimakan 5/8. Baki 8/8 − 5/8 = 3/8."),
+Q("Tangki air berisi 3/4 penuh. Sebanyak 1/4 daripada kapasiti tangki digunakan. Berapa bahagian yang tinggal?",["1/2","2/4","3/4","1/4"],0,"3/4 − 1/4 = 2/4 = 1/2."),
+Q("Aina berjalan 2/6 km pada pagi dan 3/6 km pada petang. Berapa jumlah jarak?",["5/12 km","1/6 km","5/6 km","1 km"],2,"2/6 + 3/6 = 5/6 km."),
+Q("Antara 3/5 dan 4/10, yang manakah lebih besar?",["4/10","3/5","Sama nilai","Tidak boleh dibanding"],1,"3/5 = 6/10, dan 6/10 lebih besar daripada 4/10."),
+Q("Sebuah kek tinggal 1/3. Jika kek asal dipotong kepada 9 bahagian sama, berapa bahagian yang tinggal?",["2 bahagian","3 bahagian","6 bahagian","9 bahagian"],1,"1/3 bersamaan 3/9, jadi 3 daripada 9 bahagian tinggal.")
+],
+[
+Q("Laluan A memerlukan 3/4 jam. Laluan B memerlukan 2/3 jam. Laluan manakah lebih cepat dan berapa beza masa?",["A, beza 1/12 jam","B, beza 1/12 jam","A, beza 1/6 jam","B, beza 1/4 jam"],1,"3/4 = 9/12 dan 2/3 = 8/12. Laluan B lebih cepat sebanyak 1/12 jam."),
+Q("Sebuah bekas berisi 5/6 liter jus. 1/3 liter dituang keluar. Berapa liter jus yang tinggal?",["4/3 L","1/2 L","1/3 L","2/6 L"],1,"1/3 = 2/6. Maka 5/6 − 2/6 = 3/6 = 1/2 L."),
+Q("Farah menyiapkan 2/5 tugasan pada pagi dan 1/4 pada petang. Berapa bahagian tugasan belum siap?",["13/20","7/20","7/9","3/20"],1,"2/5 + 1/4 = 8/20 + 5/20 = 13/20 siap. Baki 7/20."),
+Q("Pita 2 meter dipotong kepada bahagian 1/4 meter. Berapa bahagian penuh boleh dibuat?",["4","6","8","10"],2,"2 ÷ 1/4 = 2 × 4 = 8 bahagian."),
+Q("Dalam pertandingan, Amir menyelesaikan 3/8 cabaran dan Sara 5/12. Siapakah menyelesaikan bahagian lebih besar?",["Amir","Sara","Sama","Maklumat tidak cukup"],1,"3/8 = 9/24 dan 5/12 = 10/24. Sara menyelesaikan bahagian lebih besar.")
+]
+],
+[
+[
+Q("Nilai tempat digit 7 dalam 4.72 ialah…",["Sa","Persepuluh","Perseratus","Puluh"],1,"Digit pertama selepas titik perpuluhan ialah tempat persepuluh."),
+Q("Manakah nombor perpuluhan paling besar?",["0.45","0.54","0.405","0.5"],1,"0.54 lebih besar daripada 0.50, 0.45 dan 0.405."),
+Q("Tulis tujuh persepuluh dalam bentuk perpuluhan.",["0.07","7.0","0.7","70"],2,"Tujuh persepuluh ditulis sebagai 0.7."),
+Q("Pilih nombor yang sama nilai dengan 0.6.",["0.06","0.60","6.0","0.006"],1,"Menambah sifar di hujung bahagian perpuluhan tidak mengubah nilai: 0.6 = 0.60."),
+Q("Susun menaik: 0.3, 0.08, 0.25.",["0.3, 0.25, 0.08","0.08, 0.25, 0.3","0.25, 0.08, 0.3","0.08, 0.3, 0.25"],1,"Bandingkan sebagai 0.30, 0.08 dan 0.25. Urutan menaik ialah 0.08, 0.25, 0.3.")
+],
+[
+Q("Kira 2.4 + 1.3.",["3.7","3.17","2.7","4.7"],0,"Susun titik perpuluhan: 2.4 + 1.3 = 3.7."),
+Q("Kira 5.8 − 2.6.",["3.2","3.8","2.2","4.2"],0,"5.8 − 2.6 = 3.2."),
+Q("Satu botol mengandungi 1.5 L air. Berapa liter dalam 3 botol?",["3.5 L","4.0 L","4.5 L","5.0 L"],2,"1.5 × 3 = 4.5 liter."),
+Q("RM10 − RM3.75 = …",["RM6.25","RM7.25","RM6.75","RM7.75"],0,"RM10.00 − RM3.75 = RM6.25."),
+Q("Bulatkan 6.47 kepada satu tempat perpuluhan.",["6.4","6.5","6.0","6.47"],1,"Digit perseratus ialah 7, jadi digit persepuluh 4 dibundarkan naik menjadi 5.")
+],
+[
+Q("Siti berlari 1.25 km pada pagi dan 0.8 km pada petang. Berapa jumlah jarak?",["1.33 km","2.05 km","2.5 km","1.95 km"],1,"1.25 + 0.80 = 2.05 km."),
+Q("Harga buku RM4.60. Ali membayar RM10. Berapa baki wangnya?",["RM4.40","RM5.40","RM5.60","RM6.40"],2,"RM10.00 − RM4.60 = RM5.40." .replace("RM5.40","RM5.40")),
+Q("Tali 3.6 m dipotong kepada 4 bahagian sama panjang. Panjang setiap bahagian?",["0.4 m","0.8 m","0.9 m","1.2 m"],2,"3.6 ÷ 4 = 0.9 m."),
+Q("Sebuah bekas mengandungi 2.35 L jus. Ditambah 1.7 L. Berapakah jumlah jus?",["3.05 L","4.05 L","4.12 L","3.75 L"],1,"2.35 + 1.70 = 4.05 L."),
+Q("Antara 2.08, 2.8 dan 2.18, nombor di tengah apabila disusun menaik ialah…",["2.08","2.18","2.8","Tiada"],1,"Urutan menaik ialah 2.08, 2.18, 2.80. Nombor di tengah ialah 2.18.")
+],
+[
+Q("Tiga barang berharga RM2.35, RM1.80 dan RM3.45. Jika wang anda RM10, berapakah baki?",["RM2.40","RM2.30","RM3.40","RM1.40"],0,"Jumlah harga RM7.60. Baki RM10 − RM7.60 = RM2.40."),
+Q("Bekas A ada 1.75 L air. Bekas B ada 2.4 L. Berapa liter perlu dipindahkan dari B ke A supaya kedua-duanya sama banyak?",["0.325 L","0.65 L","0.75 L","1.075 L"],0,"Beza 2.40 − 1.75 = 0.65 L. Pindahkan separuh beza: 0.65 ÷ 2 = 0.325 L."),
+Q("Seutas reben 5.4 m digunakan 1.85 m dan 2.1 m. Berapa panjang yang tinggal?",["1.45 m","1.55 m","1.65 m","2.35 m"],0,"Jumlah digunakan 3.95 m. Baki 5.4 − 3.95 = 1.45 m."),
+Q("Panjang laluan 0.75 km. Nadia telah berjalan 0.4 km. Berapa lagi perlu berjalan?",["0.25 km","0.35 km","0.45 km","0.4 km"],1,"0.75 − 0.40 = 0.35 km."),
+Q("Mana lebih jimat: 4 pek jus 0.25 L setiap satu atau 1 botol 0.9 L? Berapa bezanya?",["4 pek, beza 0.1 L","Botol, beza 0.1 L","Sama banyak","4 pek, beza 0.25 L"],1,"4 × 0.25 = 1.0 L. Empat pek lebih banyak 0.1 L berbanding botol 0.9 L.")
+]
+],
+[
+[
+Q("25% bersamaan dengan pecahan…",["1/2","1/4","3/4","1/5"],1,"25% = 25/100 = 1/4."),
+Q("50% daripada 20 ialah…",["5","10","15","20"],1,"50% ialah separuh. Separuh daripada 20 ialah 10."),
+Q("Bentuk perpuluhan bagi 75% ialah…",["0.075","7.5","0.75","75.0"],2,"75% = 75 ÷ 100 = 0.75."),
+Q("10% daripada 80 ialah…",["8","10","18","70"],0,"10% = 1/10. 80 ÷ 10 = 8."),
+Q("Satu bulatan dibahagi kepada 100 bahagian. 40 bahagian berlorek. Berapa peratus berlorek?",["4%","40%","60%","400%"],1,"40 daripada 100 bahagian bersamaan 40%.")
+],
+[
+Q("20% daripada 50 murid menyertai kelab robotik. Berapa orang murid?",["5","10","20","25"],1,"20% × 50 = 10 murid."),
+Q("Tukar 0.35 kepada peratus.",["3.5%","35%","350%","0.35%"],1,"0.35 × 100% = 35%."),
+Q("Baju RM40 diberi diskaun 10%. Berapakah harga diskaun?",["RM4","RM10","RM30","RM36"],0,"10% daripada RM40 ialah RM4."),
+Q("Pecahan 3/4 bersamaan dengan…",["25%","50%","75%","80%"],2,"3/4 = 75/100 = 75%."),
+Q("Daripada 30 biji guli, 6 berwarna merah. Berapa peratus guli merah?",["6%","20%","24%","30%"],1,"6/30 = 1/5 = 20%.")
+],
+[
+Q("Sebuah beg berharga RM80 diberi diskaun 25%. Berapakah harga selepas diskaun?",["RM20","RM55","RM60","RM65"],2,"25% daripada RM80 = RM20. Harga baharu RM80 − RM20 = RM60."),
+Q("Dalam kelas 40 murid, 60% ialah perempuan. Berapa murid lelaki?",["16","20","24","26"],0,"60% × 40 = 24 perempuan. Lelaki = 40 − 24 = 16."),
+Q("Tangki 200 L berisi 35% air. Berapa liter air di dalamnya?",["35 L","65 L","70 L","135 L"],2,"35% × 200 = 70 L."),
+Q("Harga kasut RM120 naik 10%. Berapakah harga baharu?",["RM12","RM108","RM130","RM132"],3,"10% × RM120 = RM12. Harga baharu RM120 + RM12 = RM132."),
+Q("Kedai menjual 45 daripada 60 kek. Berapa peratus kek telah dijual?",["45%","60%","75%","80%"],2,"45/60 = 3/4 = 75%.")
+],
+[
+Q("Beg A berharga RM100 dengan diskaun 20%. Beg B berharga RM90 dengan diskaun 10%. Beg manakah lebih murah selepas diskaun?",["Beg A, RM80","Beg B, RM81","Beg A, RM90","Kedua-duanya sama"],0,"Beg A: RM100 − RM20 = RM80. Beg B: RM90 − RM9 = RM81. Beg A lebih murah."),
+Q("Sebuah sekolah mempunyai 240 murid. 35% menyertai sukan. Berapa murid tidak menyertai sukan?",["84","156","165","205"],1,"35% × 240 = 84. Tidak menyertai = 240 − 84 = 156."),
+Q("Harga basikal RM250 selepas diskaun 20%. Berapakah harga asal sebelum diskaun?",["RM280","RM300","RM312.50","RM200"],2,"Harga selepas diskaun ialah 80% harga asal. RM250 ÷ 0.8 = RM312.50."),
+Q("Dalam tin ada 80 biji guli. 25% merah, 3/8 biru dan selebihnya hijau. Berapa biji guli hijau?",["20","30","35","50"],1,"Merah 20, biru 3/8 × 80 = 30. Hijau = 80 − 20 − 30 = 30."),
+Q("Harga RM60 diturunkan 15%, kemudian diberi potongan tambahan RM3. Berapa harga akhir?",["RM48","RM51","RM54","RM57"],0,"15% daripada RM60 = RM9. RM60 − RM9 − RM3 = RM48.")
+]
+]
+];
+const bossQuestions=[
+Q("Sebuah sekolah mempunyai 300 murid. 40% menyertai kelab STEM dan 1/3 daripada murid selebihnya menyertai kelab seni. Berapa murid tidak menyertai kedua-dua kelab?",["120","140","160","180"],1,"STEM: 40% × 300 = 120. Baki 180. Seni: 1/3 × 180 = 60. Tidak menyertai kedua-duanya = 300 − 120 − 60 = 120."),
+Q("Tangki 60 L berisi 3/4 penuh. 20% daripada air itu digunakan. Berapa liter air tinggal?",["12 L","36 L","45 L","48 L"],1,"Air awal 3/4 × 60 = 45 L. Digunakan 20% × 45 = 9 L. Baki 36 L."),
+Q("Kedai A menjual beg RM160 dengan diskaun 25%. Kedai B menjual beg sama RM150 dengan diskaun 20%. Pilih tawaran terbaik.",["Kedai A, RM120","Kedai B, RM120","Kedai A, RM140","Kedai B, RM130"],0,"Kedai A: 160 × 75% = RM120. Kedai B: 150 × 80% = RM120. Kedua-duanya sama harga."),
+Q("Aiman membaca 0.35 buku pada Isnin dan 3/10 pada Selasa. Berapa peratus buku masih belum dibaca?",["35%","65%","70%","30%"],1,"0.35 + 0.30 = 0.65 = 65% telah dibaca. Baki 35%."),
+Q("Untuk projek, 2.4 m pita dibahagi sama rata kepada 6 kumpulan. Setiap kumpulan menggunakan 25% pita yang diterima. Berapa meter pita digunakan oleh satu kumpulan?",["0.1 m","0.2 m","0.4 m","0.6 m"],0,"Setiap kumpulan menerima 2.4 ÷ 6 = 0.4 m. 25% × 0.4 = 0.1 m.")
+];
+let state={name:"Ejen",avatar:0,xp:0,score:0,correct:0,wrong:0,answered:0,combo:0,bestCombo:0,unlocked:0,crystals:[],badges:[],completed:[],highLevel:"Belum bermula",startedAt:0,elapsed:0,zone:0,level:0,questions:[],qi:0,lives:3,levelCorrect:0,levelWrong:0,levelStart:0,fastBonus:0,bossDone:false,bossPassed:false,bossMode:false};
+let tick=null,answerLocked=false,sessionCorrect=0,sessionWrong=0;
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='map')renderMap();if(id==='achievements')renderBadges();if(id==='leaderboard')renderLeaderboard();updateTop();}
+function updateTop(){document.getElementById('topXP').textContent=state.xp;document.getElementById('topLives').textContent=state.lives;document.getElementById('topCrystals').textContent=state.crystals.length+'/4';}
+function init(){document.getElementById('avatarGrid').innerHTML=avatars.map((a,i)=>`<button class="avatar ${i===0?'selected':''}" onclick="selectAvatar(${i})" id="av${i}">${a[0]}<small>${a[1]}</small></button>`).join('');renderMap();renderBadges();}
+function selectAvatar(i){state.avatar=i;avatars.forEach((a,j)=>document.getElementById('av'+j).classList.toggle('selected',i===j));}
+function startNewGame(){const name=document.getElementById('playerName').value.trim();if(!name){alert('Sila masukkan nama ejen dahulu.');return;}state={name,avatar:state.avatar,xp:0,score:0,correct:0,wrong:0,answered:0,combo:0,bestCombo:0,unlocked:0,crystals:[],badges:[],completed:[],highLevel:"REKRUT",startedAt:Date.now(),elapsed:0,zone:0,level:0,questions:[],qi:0,lives:3,levelCorrect:0,levelWrong:0,levelStart:0,fastBonus:0,bossDone:false,bossPassed:false,bossMode:false};sessionCorrect=0;sessionWrong=0;showScreen('map');}
+function renderMap(){document.getElementById('mapSummary').innerHTML=`Ejen <b>${esc(state.name)}</b> ${avatars[state.avatar][0]} · Zon terbuka: <b>${Math.min(state.unlocked+1,4)}/4</b> · Kristal: <b>${state.crystals.length}/4</b>`;document.getElementById('zoneGrid').innerHTML=zones.map((z,i)=>{let open=i<=state.unlocked,done=state.crystals.includes(i);return `<div class="card zone ${open?'':'locked'}"><div class="symbol">${z.symbol}</div><h3>${i+1}. ${z.name}</h3><p>${z.desc}</p><div class="small ${done?'toast':'muted'}">${done?'💎 Kristal diperoleh':open?'🔓 Zon dibuka':'🔒 Selesaikan zon sebelumnya'}</div><div class="actions"><button ${open?'':'disabled'} onclick="openZone(${i})">${done?'ULANG MISI':'MASUK ZON'} →</button></div></div>`}).join('');document.getElementById('bossEntry').classList.toggle('hidden',state.crystals.length<4||state.bossPassed);updateTop();}
+function openZone(z){state.zone=z;document.getElementById('gameTitle').textContent=zones[z].name;showLevelPicker(z);}
+function showLevelPicker(z){const content=document.getElementById('game');content.innerHTML=`<div class="question-head"><div><div class="eyebrow">ZON ${z+1} // PILIH ARAS</div><h2>${zones[z].symbol} ${zones[z].name}</h2></div><button class="secondary" onclick="showScreen('map')">← Peta</button></div><p class="muted">Setiap aras mempunyai 5 soalan. Selesaikan aras untuk bergerak ke aras seterusnya.</p><div class="level-list">${levels.map((l,i)=>`<button class="level" onclick="startLevel(${z},${i})">${i+1}<br><b>${l}</b><small>5 soalan</small></button>`).join('')}</div><div class="notice">💡 Jawapan betul: +100 XP · Bonus pantas: +25 XP · Kombo 5: +100 XP.</div>`;content.classList.add('active');document.querySelectorAll('.screen').forEach(s=>{if(s.id!=='game')s.classList.remove('active')});}
+function startLevel(z,l){state.zone=z;state.level=l;state.lives=3;state.combo=0;state.levelCorrect=0;state.levelWrong=0;state.qi=0;state.levelStart=Date.now();state.bossMode=false;state.questions=shuffle(bank[z][l]);buildGameScreen();loadQuestion();startClock();showScreen('game');}
+function startBoss(){state.bossMode=true;state.zone=4;state.level=4;state.lives=3;state.combo=0;state.levelCorrect=0;state.levelWrong=0;state.qi=0;state.levelStart=Date.now();state.questions=shuffle(bossQuestions);buildGameScreen();document.getElementById('gameTitle').textContent='FINAL BOSS — MASTER OF NUMBERS';document.getElementById('gameEyebrow').textContent='OPERASI AKHIR // KBAT';loadQuestion();startClock();showScreen('game');}
+function buildGameScreen(){document.getElementById('game').innerHTML=`<div class="question-head"><div><div class="eyebrow" id="gameEyebrow"></div><h2 id="gameTitle"></h2></div><button class="secondary" onclick="leaveMission()">Ⅱ Jeda / Peta</button></div><div class="stats"><div class="stat">⚡ XP <span id="gameXP">0</span></div><div class="stat">❤️ <span id="gameLives">3</span></div><div class="stat">🔥 Kombo <span id="gameCombo">0</span></div><div class="stat">⏱️ <span id="timer">0:00</span></div></div><div class="progress"><div id="progressBar"></div></div><div class="question-head"><span id="questionCount" class="muted"></span><span id="levelTag" class="toast"></span></div><div class="card" style="margin-top:12px"><div class="question" id="questionText"></div><div class="options" id="options"></div><div id="feedback" class="feedback hidden" aria-live="polite"></div><div class="actions"><button id="nextBtn" class="hidden" onclick="nextQuestion()">SOALAN SETERUSNYA →</button><button id="retryBtn" class="pink hidden" onclick="retryLevel()">🔄 CUBA SEMULA ARAS</button></div></div>`;}
+function loadQuestion(){answerLocked=false;const q=state.questions[state.qi];if(!q){finishLevel();return;}document.getElementById('gameEyebrow').textContent=state.bossMode?'OPERASI AKHIR // KBAT':`ZON ${state.zone+1} // ARAS ${state.level+1}`;document.getElementById('gameTitle').textContent=state.bossMode?'FINAL BOSS — MASTER OF NUMBERS':zones[state.zone].name;document.getElementById('levelTag').textContent=state.bossMode?'FINAL BOSS':levels[state.level];document.getElementById('questionCount').textContent=`Soalan ${state.qi+1}/${state.questions.length}`;document.getElementById('progressBar').style.width=(state.qi/state.questions.length*100)+'%';document.getElementById('questionText').textContent=q.q;document.getElementById('options').innerHTML=q.opts.map((o,i)=>`<button class="option" onclick="chooseAnswer(${i})"><b>${String.fromCharCode(65+i)}</b><span>${o}</span></button>`).join('');document.getElementById('feedback').className='feedback hidden';document.getElementById('nextBtn').classList.add('hidden');document.getElementById('retryBtn').classList.add('hidden');updateGameStats();}
+function chooseAnswer(i){if(answerLocked)return;answerLocked=true;const q=state.questions[state.qi],ok=i===q.a;const opts=[...document.querySelectorAll('.option')];opts.forEach((b,j)=>{b.disabled=true;if(j===q.a)b.classList.add('correct');if(j===i&&!ok)b.classList.add('wrong')});const fb=document.getElementById('feedback');fb.classList.remove('hidden');state.answered++;if(ok){state.correct++;sessionCorrect++;state.levelCorrect++;state.combo++;state.bestCombo=Math.max(state.bestCombo,state.combo);let earned=100;const seconds=(Date.now()-state.questionStarted)/1000;if(seconds<=10){earned+=25;state.fastBonus+=25;}if(state.combo>0&&state.combo%5===0){earned+=100;fb.innerHTML=`<strong>🎉 Misi Berjaya! COMBO BONUS +100 XP</strong>${q.exp}<br><b>+${earned} XP</b>`;}else fb.innerHTML=`<strong>✨ Misi Berjaya! +${earned} XP</strong>${q.exp}`;state.xp+=earned;state.score+=earned;fb.classList.add('good');}else{state.wrong++;sessionWrong++;state.levelWrong++;state.combo=0;state.lives--;fb.innerHTML=`<strong>🧭 Belum tepat — cuba fahami petunjuk ini.</strong>Jawapan yang betul: <b>${q.opts[q.a]}</b><br>${q.exp}`;fb.classList.add('bad');}state.questionStarted=Date.now();updateGameStats();updateTop();if(state.lives<=0){document.getElementById('retryBtn').classList.remove('hidden');fb.innerHTML+=`<br><br><b>Nyawa habis.</b> Anda boleh cuba semula aras ini. Kemajuan aras terdahulu kekal.`;}else document.getElementById('nextBtn').classList.remove('hidden');}
+function nextQuestion(){if(state.lives<=0)return;state.qi++;if(state.qi>=state.questions.length)finishLevel();else loadQuestion();}
+function retryLevel(){startLevel(state.zone,state.level);}
+function finishLevel(){stopClock();document.getElementById('progressBar').style.width='100%';if(state.bossMode){state.bossDone=true;state.bossPassed=state.levelCorrect>=4;if(state.bossPassed){award('LEGASI KOTA NOMBOR');state.xp+=500;state.score+=500;showResults(true);}else{document.getElementById('questionText').textContent=`Anda mendapat ${state.levelCorrect}/5. Final Boss memerlukan sekurang-kurangnya 4 jawapan betul.`;document.getElementById('options').innerHTML='';document.getElementById('feedback').className='feedback';document.getElementById('feedback').innerHTML='<strong>Hampir berjaya, ejen!</strong>Ulang kaji konsep dan cuba Final Boss sekali lagi.';document.getElementById('nextBtn').classList.add('hidden');document.getElementById('retryBtn').classList.remove('hidden');}return;}
+if(state.levelCorrect>=3){const key=`${state.zone}-${state.level}`;if(!state.completed.includes(key))state.completed.push(key);state.highLevel=levels[state.level];if(state.level===3){if(!state.crystals.includes(state.zone))state.crystals.push(state.zone);state.unlocked=Math.max(state.unlocked,Math.min(state.zone+1,3));if(state.zone===0)award('Ejen Pecahan');if(state.zone===1)award('Pakar Perpuluhan');if(state.zone===2)award('Master Peratus');if(state.zone===3)award('Raja KBAT');}const fb=document.getElementById('feedback');fb.className='feedback good';fb.innerHTML=`<strong>🏁 Aras selesai!</strong>Anda menjawab ${state.levelCorrect}/5 dengan betul. ${state.levelCorrect>=4?'Prestasi cemerlang!':'Teruskan latihan untuk skor lebih tinggi.'}<div class="actions"><button onclick="continueAfterLevel()">TERUSKAN →</button></div>`;document.getElementById('nextBtn').classList.add('hidden');}else{const fb=document.getElementById('feedback');fb.className='feedback bad';fb.innerHTML=`<strong>Aras belum dikuasai.</strong>Anda menjawab ${state.levelCorrect}/5 dengan betul. Sasaran minimum ialah 3/5 untuk membuka aras seterusnya.<div class="actions"><button class="pink" onclick="retryLevel()">CUBA SEMULA ARAS</button><button class="secondary" onclick="showScreen('map')">KEMBALI KE PETA</button></div>`;document.getElementById('nextBtn').classList.add('hidden');}updateTop();}
+function continueAfterLevel(){if(state.level<3){startLevel(state.zone,state.level+1);}else if(state.crystals.length===4){showScreen('map');}else{showScreen('map');}}
+function leaveMission(){stopClock();showScreen('map');}
+function startClock(){stopClock();tick=setInterval(()=>{const t=Math.floor((Date.now()-state.levelStart)/1000);const el=document.getElementById('timer');if(el)el.textContent=Math.floor(t/60)+':'+String(t%60).padStart(2,'0');},1000);}
+function stopClock(){if(tick){clearInterval(tick);tick=null;}}
+function updateGameStats(){['gameXP','gameLives','gameCombo'].forEach((id,i)=>{const el=document.getElementById(id);if(el)el.textContent=[state.xp,state.lives,state.combo][i];});updateTop();}
+function award(name){if(!state.badges.includes(name))state.badges.push(name);}
+function renderBadges(){const all=[['Ejen Pecahan','🔷','Selesaikan Zon Akademi Pecahan'],['Pakar Perpuluhan','🌆','Selesaikan Zon Bandar Perpuluhan'],['Master Peratus','💯','Selesaikan Zon Kota Peratus'],['Raja KBAT','🧠','Selesaikan Zon Makmal KBAT'],['LEGASI KOTA NOMBOR','🏆','Tewaskan Final Boss dengan sekurang-kurangnya 4/5']];document.getElementById('badgeList').innerHTML=all.map(b=>`<div class="badge" style="opacity:${state.badges.includes(b[0])?1:.35}"><span>${b[1]}</span><b>${b[0]}</b><div class="small muted">${b[2]}</div>${state.badges.includes(b[0])?'<div class="toast small">✓ Diperoleh</div>':'<div class="small muted">Belum diperoleh</div>'}</div>`).join('');}
+function showResults(win){stopClock();const elapsed=Math.floor((Date.now()-state.startedAt)/1000);const accuracy=state.answered?Math.round(state.correct/state.answered*100):0;let msg=accuracy>=90?'Hebat! Anda ialah MASTER MATEMATIK!':accuracy>=70?'Syabas! Anda hampir menjadi MASTER!':accuracy>=50?'Bagus! Teruskan latihan.':'Jangan berputus asa. Cuba lagi dan kuasai misi ini!';document.getElementById('resultHeading').textContent=win?'🏆 LEGASI KOTA NOMBOR DIPULIHKAN!':'LAPORAN MISI';document.getElementById('motivation').textContent=`${msg} ${state.name}, terima kasih kerana membantu NEXUS.`;document.getElementById('resultStats').innerHTML=[['Nama pemain',esc(state.name)],['Jumlah skor',state.score],['XP',state.xp],['Jawapan betul',state.correct],['Jawapan salah',state.wrong],['Ketepatan',accuracy+'%'],['Masa bermain',Math.floor(elapsed/60)+':'+String(elapsed%60).padStart(2,'0')],['Aras tertinggi',state.highLevel],['Kristal',state.crystals.length+'/4']].map(x=>`<div class="result-stat"><span class="muted small">${x[0]}</span><strong>${x[1]}</strong></div>`).join('');document.getElementById('resultBadges').innerHTML=state.badges.map(b=>`<div class="badge"><span>🏅</span><b>${b}</b></div>`).join('')||'<span class="muted">Belum ada lencana.</span>';saveLeaderboard({name:state.name,score:state.score,xp:state.xp,accuracy,date:new Date().toLocaleDateString('ms-MY')});showScreen('results');}
+function retryBoss(){startBoss();}
+function resetAll(){stopClock();document.getElementById('playerName').value='';state={name:'Ejen',avatar:0,xp:0,score:0,correct:0,wrong:0,answered:0,combo:0,bestCombo:0,unlocked:0,crystals:[],badges:[],completed:[],highLevel:'Belum bermula',startedAt:0,elapsed:0,zone:0,level:0,questions:[],qi:0,lives:3,levelCorrect:0,levelWrong:0,levelStart:0,fastBonus:0,bossDone:false,bossPassed:false,bossMode:false};showScreen('profile');}
+function saveLeaderboard(row){try{let a=JSON.parse(localStorage.getItem('nexusBoard')||'[]');a.push(row);a.sort((x,y)=>y.score-x.score);localStorage.setItem('nexusBoard',JSON.stringify(a.slice(0,10)));}catch(e){}}
+function renderLeaderboard(){let a=[];try{a=JSON.parse(localStorage.getItem('nexusBoard')||'[]')}catch(e){}document.getElementById('leaderList').innerHTML=a.length?`<table style="width:100%;border-collapse:collapse"><tr><th style="text-align:left;padding:10px"># / Ejen</th><th>Skor</th><th>Ketepatan</th></tr>${a.map((r,i)=>`<tr><td style="padding:10px;border-top:1px solid #2b426d">${i+1}. ${esc(r.name)}<div class="small muted">${r.date}</div></td><td style="text-align:center;border-top:1px solid #2b426d">${r.score}</td><td style="text-align:center;border-top:1px solid #2b426d">${r.accuracy}%</td></tr>`).join('')}</table>`:'<p class="muted">Belum ada rekod. Selesaikan misi untuk muncul di sini.</p>';}
+function clearLeaderboard(){if(confirm('Padam semua rekod leaderboard pada peranti ini?')){localStorage.removeItem('nexusBoard');renderLeaderboard();}}
+function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+init();
+</script>
+</body>
+</html>'''
+# fix a few logic/answer inconsistencies before saving
+# Store complete standalone HTML file
+out = Path("/mnt/data/misi_matematik_5_legasi_kota_nombor.html")
+out.write_text(html, encoding="utf-8")
+print(f"Created {out} ({out.stat().st_size:,} bytes)")
