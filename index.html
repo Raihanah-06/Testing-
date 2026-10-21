@@ -3,410 +3,617 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Math Adventure Tahun 5 - Local Leaderboard</title>
+<title>Math Adventure - Tahun 5</title>
 <style>
-:root{--navy:#12325b;--blue:#1769c2;--gold:#ffca3a;--cream:#fff9e9;--green:#35bc4a}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#102b53;color:#fff;text-align:center}
-header{padding:12px;background:#123d75}
-h1{margin:4px;color:#ffdf58;font-size:clamp(23px,5vw,36px)}
-header p{margin:6px}
-.hud{max-width:1000px;margin:auto;padding:10px;display:flex;justify-content:space-around;gap:8px;flex-wrap:wrap;background:#17447c}
-.hud span{color:#ffdf58;font-weight:bold}
-button,select,input{font:inherit;border:0;border-radius:10px;padding:11px 13px}
-button{background:var(--gold);color:var(--navy);font-weight:bold;cursor:pointer}
-button:disabled{opacity:.5;cursor:not-allowed}
-button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f59e0b;outline-offset:2px}
-.toolbar{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;padding:10px}
-#game{display:block;width:100%;max-width:1000px;height:auto;margin:auto;background:#62d4ff;border:3px solid #fff;touch-action:none}
-#message{min-height:30px;padding:8px;color:#ffdf58}
-.controls{display:flex;justify-content:center;gap:12px;padding:10px}
-.controls button{min-width:68px;min-height:54px;font-size:23px;background:#eaf5ff;touch-action:none}
-.controls #jump{background:var(--gold);min-width:110px}
-.hint{font-size:13px;padding:0 12px 15px;line-height:1.5;color:#dbeafe}
-.modal{position:fixed;inset:0;z-index:5;display:none;align-items:center;justify-content:center;padding:14px;background:#06152de8;overflow:auto}
-.panel{background:white;color:#17335b;width:100%;max-width:480px;padding:23px;border-radius:20px;box-shadow:0 8px 0 #d4a64b;max-height:94vh;overflow:auto}
-.panel h2{margin-top:0}
-.panel input{border:1px solid #bac8d9;width:100%;margin:6px 0 12px}
-.panel select{border:1px solid #bac8d9;background:white;width:100%;margin:6px 0 12px}
-.avatar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0 16px}
-.avatar{font-size:28px;background:#edf5ff;border:3px solid transparent;padding:10px 4px}
-.avatar.selected{border-color:#1769c2;background:#dbeafe}
-#question{font-size:22px;font-weight:bold;line-height:1.45}
-#answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
-#answers button{background:#1769c2;color:white}
-#feedback{min-height:25px;font-weight:bold;line-height:1.4}
-.reward{font-size:19px;color:#b77900;font-weight:bold}
-table{width:100%;border-collapse:collapse;margin:12px 0;color:#17335b;font-size:14px}
-th,td{padding:9px 5px;border-bottom:1px solid #dce5ef;text-align:left}
-th{background:#e8f2ff}
-.you{background:#fff2bf;font-weight:bold}
-.small{font-size:12px;color:#52657d;line-height:1.4}
-.status{font-size:13px;min-height:18px;color:#52657d}
-@media(max-width:500px){.panel{padding:17px}#question{font-size:19px}.controls button{min-width:60px}.avatar{font-size:25px}}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #102b53;
+  color: white;
+  text-align: center;
+}
+header { padding: 12px; background: #123d75; }
+h1 { margin: 4px; color: #ffdf58; }
+header p { margin: 6px; }
+.toolbar {
+  display: flex; justify-content: center; gap: 8px;
+  align-items: center; flex-wrap: wrap; padding: 10px;
+}
+select, button {
+  font-size: 16px; border: 0; border-radius: 10px;
+  padding: 10px 14px; cursor: pointer;
+}
+select { background: white; color: #15345f; }
+button { background: #ffca3a; color: #15345f; font-weight: bold; }
+button:active { transform: scale(.97); }
+#game {
+  display: block; width: 100%; max-width: 1000px;
+  height: auto; margin: auto; background: #62d4ff;
+  border: 3px solid #fff;
+  touch-action: none;
+}
+.hud {
+  max-width: 1000px; margin: auto; padding: 10px;
+  display: flex; justify-content: space-around;
+  gap: 8px; flex-wrap: wrap; background: #17447c;
+}
+.hud span { color: #ffdf58; font-weight: bold; }
+#message { min-height: 28px; padding: 8px; color: #ffdf58; }
+.controls {
+  display: flex; justify-content: center; gap: 12px;
+  padding: 12px; align-items: center;
+}
+.controls button {
+  min-width: 72px; min-height: 54px; font-size: 24px;
+  background: #eaf5ff;
+}
+#jump { background: #ffca3a; min-width: 110px; }
+.hint { font-size: 13px; padding: 0 12px 16px; }
+.modal {
+  position: fixed; inset: 0; z-index: 5;
+  display: none; align-items: center; justify-content: center;
+  padding: 16px; background: #06152bdd;
+}
+.panel {
+  background: white; color: #17335b; width: 100%;
+  max-width: 440px; padding: 24px; border-radius: 20px;
+  box-shadow: 0 8px 0 #d4a64b;
+}
+.panel h2 { margin-top: 0; }
+#question { font-size: 22px; font-weight: bold; line-height: 1.5; }
+#answers {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  margin: 20px 0;
+}
+#answers button { background: #1769c2; color: white; }
+#answers button:disabled { opacity: .55; }
+#feedback { min-height: 24px; font-weight: bold; }
+@media (max-width: 500px) {
+  .panel { padding: 18px; }
+  #question { font-size: 19px; }
+  .controls button { min-width: 65px; }
+}
 </style>
 </head>
 <body>
+
 <header>
   <h1>🏝️ MATH ADVENTURE</h1>
   <p>Pengembaraan Matematik Tahun 5</p>
 </header>
 
 <div class="toolbar">
-  <label for="difficulty">Tahap:</label>
+  <label for="difficulty">Tahap cabaran:</label>
   <select id="difficulty">
     <option value="1">Level 1 - Explorer</option>
     <option value="2">Level 2 - Adventurer</option>
     <option value="3">Level 3 - Math Master</option>
   </select>
-  <button id="restartBtn">🔄 Mula semula</button>
-  <button id="leaderboardBtn">🏆 Leaderboard</button>
+  <button onclick="resetGame()">🔄 Mula semula</button>
 </div>
 
 <div class="hud">
-  <div>🧑‍🚀 <span id="playerLabel">Pemain</span></div>
   <div>❤️ Nyawa: <span id="lives">3</span></div>
   <div>🪙 Syiling: <span id="coins">0</span></div>
   <div>⭐ Markah: <span id="score">0</span></div>
   <div>🗺️ Cabaran: <span id="progress">0/3</span></div>
 </div>
 
-<canvas id="game" width="960" height="500" aria-label="Permainan pengembaraan Matematik"></canvas>
-<div id="message">Pilih nama dan avatar untuk memulakan pengembaraan!</div>
+<canvas id="game" width="960" height="500"
+ aria-label="Permainan pengembaraan Matematik"></canvas>
+
+<div id="message">Cari blok ? dan jawab soalan untuk membuka laluan!</div>
+
 <div class="controls">
   <button id="left" aria-label="Gerak kiri">⬅️</button>
   <button id="right" aria-label="Gerak kanan">➡️</button>
   <button id="jump" aria-label="Lompat">⬆️ LOMPAT</button>
 </div>
-<p class="hint">Komputer: ← → atau A/D untuk bergerak, SPACE atau ↑ untuk melompat.<br>
-Telefon: tekan dan tahan butang arah. Tekan LOMPAT untuk melompat.</p>
+<p class="hint">
+  Komputer: ← → atau A/D untuk bergerak, SPACE untuk melompat.<br>
+  Telefon: Tekan dan tahan butang arah. Tekan LOMPAT untuk melompat.
+</p>
 
-<!-- Player profile -->
-<div class="modal" id="profileModal" style="display:flex">
- <div class="panel">
-  <h2>🎮 Selamat Datang, Pengembara!</h2>
-  <p>Masukkan nama paparan dan pilih avatar sebelum bermain.</p>
-  <label for="playerName">Nama pemain (gunakan nama panggilan jika mahu)</label>
-  <input id="playerName" maxlength="24" placeholder="Contoh: Aina" autocomplete="off">
-  <p><strong>Pilih avatar</strong></p>
-  <div class="avatar-grid" id="avatarGrid">
-    <button class="avatar selected" data-avatar="🧑🏻‍🚀">🧑🏻‍🚀</button>
-    <button class="avatar" data-avatar="🧙🏻‍♀️">🧙🏻‍♀️</button>
-    <button class="avatar" data-avatar="🦸🏽‍♂️">🦸🏽‍♂️</button>
-    <button class="avatar" data-avatar="🤖">🤖</button>
-    <button class="avatar" data-avatar="🐱">🐱</button>
-    <button class="avatar" data-avatar="🦊">🦊</button>
-    <button class="avatar" data-avatar="🐼">🐼</button>
-    <button class="avatar" data-avatar="🐸">🐸</button>
-  </div>
-  <button id="startBtn">Mula Pengembaraan 🚀</button>
-  <p class="small">Leaderboard memaparkan nama paparan, avatar dan pencapaian. Elakkan memasukkan maklumat peribadi sensitif.</p>
-  <p class="status" id="firebaseStatus">Menyemak sambungan leaderboard...</p>
- </div>
-</div>
-
-<!-- Math challenge -->
 <div class="modal" id="quizModal">
- <div class="panel">
-  <h2>🧠 Math Challenge!</h2>
-  <p id="stageLabel">Cabaran 1 daripada 3</p>
-  <div id="question"></div>
-  <div id="answers"></div>
-  <div id="feedback" aria-live="polite"></div>
-  <button id="retryBtn" hidden>Cuba lagi</button>
- </div>
+  <div class="panel">
+    <h2>🧠 Math Challenge!</h2>
+    <p id="stageLabel">Cabaran 1 daripada 3</p>
+    <div id="question"></div>
+    <div id="answers"></div>
+    <div id="feedback" aria-live="polite"></div>
+    <button id="retry" onclick="retryQuestion()" hidden>
+      Cuba lagi
+    </button>
+  </div>
 </div>
 
-<!-- Final result and shared leaderboard -->
-<div class="modal" id="resultModal">
- <div class="panel">
-  <h2 id="resultTitle">🏆 Keputusan Pengembaraan</h2>
-  <div id="resultSummary"></div>
-  <p><strong>🏆 Leaderboard seluruh kelas</strong></p>
-  <div id="finalLeaderboard">Memuatkan leaderboard...</div>
-  <p class="status" id="resultStatus"></p>
-  <button id="playAgainBtn">Main sekali lagi</button>
-  <button id="refreshBoardBtn">Muat semula leaderboard</button>
- </div>
-</div>
-
-<!-- Standalone leaderboard -->
-<div class="modal" id="boardModal">
- <div class="panel">
-  <h2>🏆 Leaderboard Kelas</h2>
-  <div id="boardContent">Memuatkan leaderboard...</div>
-  <p class="small">Ranking mengikut markah tertinggi yang direkodkan bagi setiap sesi pemain.</p>
-  <button id="closeBoardBtn">Tutup</button>
- </div>
+<div class="modal" id="endModal">
+  <div class="panel">
+    <h2 id="endTitle">🏆 Misi Selesai!</h2>
+    <p id="endText"></p>
+    <button onclick="resetGame()">Main sekali lagi</button>
+  </div>
 </div>
 
 <script>
-const $ = id => document.getElementById(id);
-const canvas = $("game"), ctx = canvas.getContext("2d");
-const W = 960, H = 500, WORLD = 2300, gravity = .65;
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+const W = 960, H = 500, WORLD = 2300;
+const gravity = 0.65;
+
 const platforms = [
- {x:0,y:430,w:430,h:100},{x:500,y:430,w:260,h:100},
- {x:820,y:380,w:190,h:150},{x:1070,y:430,w:280,h:100},
- {x:1410,y:380,w:190,h:150},{x:1660,y:430,w:260,h:100},
- {x:1980,y:430,w:320,h:100}
+  {x:0, y:430, w:430, h:100},
+  {x:500, y:430, w:260, h:100},
+  {x:820, y:380, w:190, h:150},
+  {x:1070, y:430, w:280, h:100},
+  {x:1410, y:380, w:190, h:150},
+  {x:1660, y:430, w:260, h:100},
+  {x:1980, y:430, w:320, h:100}
 ];
-const gates = [{x:300,solved:false},{x:950,solved:false},{x:1550,solved:false}];
+
+const gates = [
+  {x:300, solved:false},
+  {x:950, solved:false},
+  {x:1550, solved:false}
+];
+
 const coinPositions = [
- {x:150,y:360},{x:205,y:330},{x:365,y:370},{x:560,y:365},{x:625,y:360},
- {x:875,y:320},{x:925,y:320},{x:1140,y:360},{x:1220,y:355},
- {x:1460,y:320},{x:1510,y:320},{x:1740,y:360},{x:1820,y:355},
- {x:2040,y:370},{x:2110,y:370}
+  {x:150,y:360},{x:205,y:330},{x:365,y:370},
+  {x:560,y:365},{x:625,y:360},{x:875,y:320},
+  {x:925,y:320},{x:1140,y:360},{x:1220,y:355},
+  {x:1460,y:320},{x:1510,y:320},{x:1740,y:360},
+  {x:1820,y:355},{x:2040,y:370},{x:2110,y:370}
 ];
-const STORAGE_KEY = "mathAdventureYear5Leaderboard_v1";
-let playerName = "", playerAvatar = "🧑🏻‍🚀", player;
-let camera=0, lives=3, coins=0, score=0, correctCount=0;
-let collected = new Set(), quizIndex=0, quizOpen=false, gameOver=false;
-let frame=0, currentQuestion=null, wrongTried=false, gameStarted=false;
-let keys={}, touch={left:false,right:false}, lastTime=0, sessionFinished=false;
 
-function setFirebaseStatus(text){ $("firebaseStatus").textContent=text; }
-setFirebaseStatus("✅ Leaderboard setempat aktif pada peranti/pelayar ini.");
-function makePlayer(){return {x:45,y:360,w:30,h:42,vx:0,vy:0,grounded:false};}
-function updateHUD(){
- $("playerLabel").textContent=playerName || "Pemain";
- $("lives").textContent=lives; $("coins").textContent=coins;
- $("score").textContent=score; $("progress").textContent=quizIndex+"/3";
-}
-function resetGame(){
- player=makePlayer(); camera=0; lives=3; coins=0; score=0; correctCount=0;
- collected=new Set(); quizIndex=0; quizOpen=false; gameOver=false;
- frame=0; sessionFinished=false; gates.forEach(g=>g.solved=false);
- $("quizModal").style.display="none"; $("resultModal").style.display="none";
- $("boardModal").style.display="none"; gameStarted=true; updateHUD();
- $("message").textContent="Cari blok ? dan jawab soalan untuk membuka laluan!";
-}
-function startWithProfile(){
- const name=$("playerName").value.trim().replace(/\s+/g," ");
- if(!name){$("playerName").focus();return;}
- playerName=name.slice(0,24);
- $("profileModal").style.display="none";
- resetGame();
-}
-$("avatarGrid").addEventListener("click",e=>{
- const btn=e.target.closest("button[data-avatar]"); if(!btn)return;
- document.querySelectorAll(".avatar").forEach(b=>b.classList.remove("selected"));
- btn.classList.add("selected"); playerAvatar=btn.dataset.avatar;
-});
-$("startBtn").addEventListener("click",startWithProfile);
-$("playerName").addEventListener("keydown",e=>{if(e.key==="Enter")startWithProfile();});
+let player, camera, lives, coins, score, collected;
+let quizIndex, quizOpen, gameOver, won, frame;
+let currentQuestion, wrongTried;
+let keys = {}, touch = {left:false,right:false};
+let lastTime = 0;
 
-function rand(n){return Math.floor(Math.random()*n)+1;}
-function makeQuestion(level){
- let a,b,c,op,ans,q,tip;
- if(level===1){
-   op=rand(2);a=rand(500);b=rand(300);
-   if(op===1){q=`Berapakah ${a} + ${b}?`;ans=a+b;tip="Susun nombor mengikut nilai tempat dan tambah.";}
-   else{if(b>a)[a,b]=[b,a];q=`Berapakah ${a} − ${b}?`;ans=a-b;tip="Susun nombor mengikut nilai tempat dan tolak.";}
- }else if(level===2){
-   op=rand(2);
-   if(op===1){a=rand(999);b=rand(9);q=`Berapakah ${a} × ${b}?`;ans=a*b;tip="Darab mengikut nilai tempat.";}
-   else{b=rand(9);ans=rand(99);a=b*ans;q=`Berapakah ${a} ÷ ${b}?`;tip="Gunakan sifir untuk mencari hasil bahagi.";}
- }else{
-   op=rand(3);
-   if(op===1){a=rand(100)+10;b=rand(9)+2;c=rand(100);q=`Berapakah (${a} × ${b}) + ${c}?`;ans=a*b+c;tip="Selesaikan operasi dalam kurungan dahulu.";}
-   else if(op===2){a=rand(900)+100;b=rand(9)+2;q=`Berapakah ${a} + (${b} × 6)?`;ans=a+b*6;tip="Darab dahulu sebelum menambah.";}
-   else{b=rand(9)+2;ans=rand(50)+10;a=b*ans;q=`Berapakah ${a} ÷ ${b} + 12?`;ans+=12;tip="Bahagi dahulu sebelum menambah.";}
- }
- return {q,ans,tip};
-}
-function showQuestion(){
- if(quizIndex>=3||quizOpen||gameOver)return;
- quizOpen=true;wrongTried=false;
- currentQuestion=makeQuestion(Number($("difficulty").value));
- $("stageLabel").textContent=`Cabaran ${quizIndex+1} daripada 3`;
- $("question").textContent=currentQuestion.q;
- $("feedback").textContent="";$("retryBtn").hidden=true;
- $("quizModal").style.display="flex";drawAnswers();
-}
-function drawAnswers(){
- const box=$("answers");box.replaceChildren();
- const correct=currentQuestion.ans,choices=new Set([correct]);
- while(choices.size<4){
-   const offset=Math.floor(Math.random()*21)-10;
-   const value=Math.max(0,correct+(offset||3));
-   if(value!==correct)choices.add(value);
- }
- [...choices].sort(()=>Math.random()-.5).forEach(value=>{
-   const b=document.createElement("button");
-   b.textContent=value.toLocaleString("en-MY");
-   b.addEventListener("click",()=>checkAnswer(value));box.appendChild(b);
- });
-}
-$("retryBtn").addEventListener("click",()=>{
- wrongTried=false;$("feedback").textContent="";$("retryBtn").hidden=true;drawAnswers();
-});
-function checkAnswer(value){
- if(wrongTried||!quizOpen)return;
- if(value===currentQuestion.ans){
-   correctCount++;score+=100;coins+=3;gates[quizIndex].solved=true;quizIndex++;
-   quizOpen=false;$("quizModal").style.display="none";
-   $("message").textContent="🎉 Betul! +100 markah, +3 syiling dan satu bintang bonus! "+currentQuestion.tip;
-   updateHUD();
-   if(quizIndex===3)$("message").textContent="Semua cabaran selesai! Teruskan ke istana! 🏰";
- }else{
-   wrongTried=true;lives--;updateHUD();
-   $("feedback").textContent="Belum tepat. Jawapan: "+currentQuestion.ans.toLocaleString("en-MY")+". Petunjuk: "+currentQuestion.tip;
-   $("retryBtn").hidden=false;
-   document.querySelectorAll("#answers button").forEach(b=>b.disabled=true);
-   if(lives<=0)setTimeout(()=>finishGame(false),900);
- }
+function makePlayer() {
+  return {x:45,y:360,w:30,h:42,vx:0,vy:0,
+          grounded:false, invulnerable:0};
 }
 
-function rect(x,y,w,h,color){ctx.fillStyle=color;ctx.fillRect(x,y,w,h);}
-function drawBackground(){
- const sky=ctx.createLinearGradient(0,0,0,H);sky.addColorStop(0,"#42b9ff");sky.addColorStop(1,"#d5f8ff");rect(0,0,W,H,sky);
- for(let i=0;i<7;i++){
-   const x=((i*190-camera*.18)%1100+1100)%1100-70;
-   ctx.fillStyle="white";ctx.beginPath();
-   ctx.arc(x,90+(i%3)*28,23,0,Math.PI*2);ctx.arc(x+25,80+(i%3)*28,31,0,Math.PI*2);ctx.arc(x+55,92+(i%3)*28,23,0,Math.PI*2);ctx.fill();
- }
- for(let i=0;i<9;i++){
-   const x=i*150-(camera*.3%150);ctx.fillStyle=i%2?"#6fcf86":"#49b77c";
-   ctx.beginPath();ctx.moveTo(x,430);ctx.lineTo(x+80,235+(i%3)*35);ctx.lineTo(x+180,430);ctx.fill();
- }
- const cx=WORLD-camera-110;
- if(cx>-160&&cx<W+100){
-   rect(cx,330,90,100,"#e9dfce");rect(cx+10,300,25,130,"#f6eee0");rect(cx+55,300,25,130,"#f6eee0");rect(cx+25,380,40,50,"#65412e");
-   ctx.fillStyle="#ed5d65";ctx.beginPath();ctx.moveTo(cx+4,300);ctx.lineTo(cx+22,255);ctx.lineTo(cx+40,300);ctx.fill();
-   ctx.beginPath();ctx.moveTo(cx+50,300);ctx.lineTo(cx+68,255);ctx.lineTo(cx+86,300);ctx.fill();
- }
+function resetGame() {
+  player = makePlayer();
+  camera = 0;
+  lives = 3;
+  coins = 0;
+  score = 0;
+  collected = new Set();
+  quizIndex = 0;
+  quizOpen = false;
+  gameOver = false;
+  won = false;
+  frame = 0;
+  gates.forEach(g => g.solved = false);
+  document.getElementById("quizModal").style.display = "none";
+  document.getElementById("endModal").style.display = "none";
+  document.getElementById("message").textContent =
+    "Cari blok ? dan jawab soalan untuk membuka laluan!";
+  updateHUD();
 }
-function drawPlatforms(){
- platforms.forEach(p=>{const x=p.x-camera;if(x+p.w<0||x>W)return;
-   rect(x,p.y,p.w,p.h,"#a85a2a");rect(x,p.y,p.w,14,"#35bc4a");rect(x,p.y,p.w,5,"#8df05e");
-   for(let bx=x+8;bx<x+p.w;bx+=32){rect(bx,p.y+26,25,4,"#d78343");rect(bx+8,p.y+52,4,16,"#86431f");}
- });
-}
-function drawCoins(){
- coinPositions.forEach((c,i)=>{if(collected.has(i))return;const x=c.x-camera;if(x<-30||x>W+30)return;
-   ctx.fillStyle="#ffb900";ctx.beginPath();ctx.ellipse(x,c.y,12,16,0,0,Math.PI*2);ctx.fill();
-   ctx.strokeStyle="#fff16a";ctx.lineWidth=3;ctx.stroke();rect(x-2,c.y-8,4,16,"#fff16a");
- });
-}
-function drawGates(){
- gates.forEach((g,i)=>{const x=g.x-camera;if(x<-50||x>W+50)return;
-   rect(x-20,g.solved?335:350,40,45,g.solved?"#4caf50":"#f4a62a");
-   ctx.strokeStyle="#874a1c";ctx.lineWidth=3;ctx.strokeRect(x-20,g.solved?335:350,40,45);
-   ctx.fillStyle="white";ctx.font="bold 30px Arial";ctx.textAlign="center";ctx.fillText(g.solved?"✓":"?",x,g.solved?368:382);
-   ctx.font="bold 13px Arial";ctx.fillText("MISI "+(i+1),x,410);
- });
-}
-function drawPlayer(){
- const x=player.x-camera,y=player.y;
- rect(x+5,y+12,21,22,"#1976d2");rect(x+4,y+30,9,12,"#174d9a");rect(x+19,y+30,9,12,"#174d9a");
- rect(x+1,y+39,13,5,"#5b321d");rect(x+17,y+39,14,5,"#5b321d");
- rect(x+6,y+1,21,17,"#f5c28b");rect(x+3,y,26,6,"#e83f46");rect(x+9,y-4,17,6,"#e83f46");
- rect(x+20,y+7,3,4,"#172c48");rect(x+24,y+13,5,3,"#ad493b");rect(x+1,y+18,6,12,"#f5c28b");rect(x+26,y+18,6,12,"#f5c28b");
-}
-function draw(){
- drawBackground();drawPlatforms();drawCoins();drawGates();drawPlayer();
- const fx=WORLD-45-camera;
- if(fx>-20&&fx<W+20){rect(fx,335,5,95,"#69452b");ctx.fillStyle="#ff4757";ctx.beginPath();ctx.moveTo(fx+5,338);ctx.lineTo(fx+43,350);ctx.lineTo(fx+5,365);ctx.fill();}
-}
-function update(dt){
- if(!gameStarted||quizOpen||gameOver)return;
- frame++;const speed=3.7;player.vx=0;
- if(keys.ArrowLeft||keys.a||touch.left)player.vx=-speed;
- if(keys.ArrowRight||keys.d||touch.right)player.vx=speed;
- player.x=Math.max(0,Math.min(WORLD-player.w,player.x+player.vx));
- player.vy=Math.min(player.vy+gravity,12);
- const oldBottom=player.y+player.h;player.y+=player.vy;player.grounded=false;
- platforms.forEach(p=>{
-   if(player.x+player.w>p.x&&player.x<p.x+p.w&&oldBottom<=p.y+5&&player.y+player.h>=p.y&&player.vy>=0){
-     player.y=p.y-player.h;player.vy=0;player.grounded=true;
-   }
- });
- if(player.y>H+30){loseLife();return;}
- coinPositions.forEach((c,i)=>{
-   if(collected.has(i))return;
-   if(Math.hypot(player.x+player.w/2-c.x,player.y+player.h/2-c.y)<29){
-     collected.add(i);coins++;score+=10;updateHUD();
-   }
- });
- const gate=gates[quizIndex];
- if(gate&&player.x+player.w>=gate.x-25){player.x=gate.x-player.w-27;player.vx=0;showQuestion();}
- camera=Math.max(0,Math.min(WORLD-W,player.x-W*.35));
- if(quizIndex===3&&player.x>WORLD-100)finishGame(true);
-}
-function loseLife(){
- lives--;updateHUD();
- if(lives<=0)finishGame(false);
- else{player.x=Math.max(0,player.x-120);player.y=250;player.vy=0;$("message").textContent="Awas! Kamu kehilangan satu nyawa.";}
-}
-function loop(time){
- const dt=Math.min((time-lastTime)/16.67||1,2);lastTime=time;
- if(player){if(!quizOpen&&!gameOver)update(dt);draw();}
- requestAnimationFrame(loop);
-}
-document.addEventListener("keydown",e=>{
- if(["ArrowLeft","ArrowRight","ArrowUp"," ","ArrowDown"].includes(e.key))e.preventDefault();
- keys[e.key]=true;
- if((e.code==="Space"||e.key==="ArrowUp"||e.key==="w")&&player&&player.grounded&&!quizOpen&&!gameOver&&gameStarted){player.vy=-12.5;player.grounded=false;}
-});
-document.addEventListener("keyup",e=>keys[e.key]=false);
-function holdButton(id,direction){
- const btn=$(id);
- const start=e=>{e.preventDefault();touch[direction]=true;try{btn.setPointerCapture(e.pointerId);}catch{}};
- const stop=e=>{e.preventDefault();touch[direction]=false;};
- btn.addEventListener("pointerdown",start);btn.addEventListener("pointerup",stop);
- btn.addEventListener("pointercancel",stop);btn.addEventListener("lostpointercapture",stop);
-}
-holdButton("left","left");holdButton("right","right");
-$("jump").addEventListener("pointerdown",e=>{
- e.preventDefault();if(player&&player.grounded&&!quizOpen&&!gameOver&&gameStarted){player.vy=-12.5;player.grounded=false;}
-});
-$("difficulty").addEventListener("change",()=>{if(gameStarted&&confirm("Tukar tahap dan mula semula?"))resetGame();});
 
-function escapeHtml(value){
- return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function updateHUD() {
+  document.getElementById("lives").textContent = lives;
+  document.getElementById("coins").textContent = coins;
+  document.getElementById("score").textContent = score;
+  document.getElementById("progress").textContent =
+    gates.filter(g => g.solved).length + "/3";
 }
-function readLeaderboard(){
- try{
-   const value=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");
-   return Array.isArray(value)?value:[];
- }catch(e){return [];}
+
+function questionBank(level) {
+  const rand = n => Math.floor(Math.random() * n) + 1;
+  let a, b, c, q, ans, tip;
+
+  if (level === 1) {
+    const op = rand(2);
+    a = rand(500); b = rand(300);
+    if (op === 1) {
+      q = `Berapakah ${a} + ${b}?`;
+      ans = a + b;
+      tip = "Susun nombor mengikut nilai tempat dan tambah.";
+    } else {
+      if (b > a) [a,b] = [b,a];
+      q = `Berapakah ${a} − ${b}?`;
+      ans = a - b;
+      tip = "Susun nombor mengikut nilai tempat dan tolak.";
+    }
+  } else if (level === 2) {
+    const op = rand(2);
+    if (op === 1) {
+      a = rand(999); b = rand(9);
+      q = `Berapakah ${a} × ${b}?`;
+      ans = a * b;
+      tip = "Darab nombor dengan setiap nilai tempat.";
+    } else {
+      b = rand(9); ans = rand(99); a = b * ans;
+      q = `Berapakah ${a} ÷ ${b}?`;
+      tip = "Gunakan sifir untuk mencari hasil bahagi.";
+    }
+  } else {
+    const op = rand(3);
+    if (op === 1) {
+      a = rand(100) + 10; b = rand(9) + 2; c = rand(100);
+      q = `Berapakah (${a} × ${b}) + ${c}?`;
+      ans = a * b + c;
+      tip = "Selesaikan operasi dalam kurungan dahulu.";
+    } else if (op === 2) {
+      a = rand(900) + 100; b = rand(9) + 2;
+      q = `Berapakah ${a} + (${b} × 6)?`;
+      ans = a + b * 6;
+      tip = "Darab dahulu sebelum menambah.";
+    } else {
+      b = rand(9) + 2; ans = rand(50) + 10; a = b * ans;
+      q = `Berapakah ${a} ÷ ${b} + 12?`;
+      ans = ans + 12;
+      tip = "Bahagi dahulu sebelum menambah.";
+    }
+  }
+  return {q, ans, tip};
 }
-function saveScore(){
- try{
-   const rows=readLeaderboard();
-   // Each name+avatar is a local profile. The highest score is kept for that profile.
-   const key=(playerName.trim().toLocaleLowerCase()+"|"+playerAvatar);
-   const idx=rows.findIndex(r=>r.key===key);
-   const previous=idx>=0?rows[idx]:null;
-   const record={
-     key,name:playerName,avatar:playerAvatar,
-     score:Math.max(score,previous?.score||0),
-     coins:score>(previous?.score||0)?coins:Math.max(coins,previous?.coins||0),
-     correct:score>(previous?.score||0)?correctCount:Math.max(correctCount,previous?.correct||0),
-     playedAt:new Date().toISOString()
-   };
-   if(idx>=0)rows[idx]=record;else rows.push(record);
-   rows.sort((a,b)=>b.score-a.score || b.correct-a.correct || b.coins-a.coins);
-   localStorage.setItem(STORAGE_KEY,JSON.stringify(rows.slice(0,100)));
-   return {ok:true,message:"Pencapaian disimpan pada peranti/pelayar ini."};
- }catch(err){
-   console.error("localStorage save:",err);
-   return {ok:false,message:"Pelayar tidak membenarkan simpanan. Cuba gunakan pelayar biasa dan bukan mod private."};
- }
+
+function showQuestion() {
+  if (quizIndex >= gates.length || quizOpen || gameOver) return;
+  quizOpen = true;
+  wrongTried = false;
+  currentQuestion = questionBank(Number(
+    document.getElementById("difficulty").value
+  ));
+  document.getElementById("stageLabel").textContent =
+    `Cabaran ${quizIndex + 1} daripada 3`;
+  document.getElementById("question").textContent = currentQuestion.q;
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("retry").hidden = true;
+  document.getElementById("quizModal").style.display = "flex";
+  drawAnswers();
 }
-function leaderboardHtml(rows){
- if(!rows.length)return "<p>Belum ada pencapaian. Jadilah pemain pertama!</p>";
- let html="<table><thead><tr><th>#</th><th>Pemain</th><th>Markah</th><th>Syiling</th></tr></thead><tbody>";
- rows.forEach((r,i)=>{
-   const medal=i===0?"🥇":i===1?"🥈":i===2?"🥉":String(i+1);
-   const cls=(r.name===playerName&&r.avatar===playerAvatar)?" class='you'":"";
-   html+=`<tr${cls}><td>${medal}</td><td>${escapeHtml(r.avatar||"🎮")} ${escapeHtml(r.name||"Pemain")}${r.name===playerName&&r.avatar===playerAvatar?" (Anda)":""}</td><td>${Number(r.score)||0}</td><td>${Number(r.coins)||0}</td></tr>`;
- });
- return html+"</tbody></table>";
+
+function drawAnswers() {
+  const box = document.getElementById("answers");
+  box.replaceChildren();
+
+  const correct = currentQuestion.ans;
+  const choices = new Set([correct]);
+  while (choices.size < 4) {
+    const offset = Math.floor(Math.random() * 21) - 10;
+    const value = Math.max(0, correct + (offset || 3));
+    if (value !== correct) choices.add(value);
+  }
+
+  [...choices].sort(() => Math.random() - .5).forEach(value => {
+    const btn = document.createElement("button");
+    btn.textContent = value.toLocaleString("en-MY");
+    btn.onclick = () => checkAnswer(value);
+    box.appendChild(btn);
+  });
 }
-function renderLeaderboard(targetId){
- $(targetId).innerHTML=leaderboardHtml(readLeaderboard());
+
+function retryQuestion() {
+  wrongTried = false;
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("retry").hidden = true;
+  drawAnswers();
 }
-function finishGame(success){
- if(sessionFinished)return;
- sessi
+
+function checkAnswer(value) {
+  if (wrongTried || !quizOpen) return;
+
+  if (value === currentQuestion.ans) {
+    score += 100;
+    coins += 3;
+    gates[quizIndex].solved = true;
+    quizIndex++;
+    quizOpen = false;
+    document.getElementById("quizModal").style.display = "none";
+    document.getElementById("message").textContent =
+      "Betul! +100 markah dan 3 syiling! " + currentQuestion.tip;
+    updateHUD();
+
+    if (quizIndex === gates.length) {
+      document.getElementById("message").textContent =
+        "Semua cabaran selesai! Teruskan ke istana! 🏰";
+    }
+  } else {
+    wrongTried = true;
+    lives--;
+    updateHUD();
+    document.getElementById("feedback").textContent =
+      "Belum tepat! Jawapan: " +
+      currentQuestion.ans.toLocaleString("en-MY") +
+      ". Petunjuk: " + currentQuestion.tip;
+    document.getElementById("retry").hidden = false;
+    document.querySelectorAll("#answers button").forEach(b => b.disabled = true);
+
+    if (lives <= 0) {
+      setTimeout(() => endGame(false), 1100);
+    }
+  }
+}
+
+function endGame(success) {
+  gameOver = true;
+  won = success;
+  quizOpen = false;
+  document.getElementById("quizModal").style.display = "none";
+  document.getElementById("endTitle").textContent =
+    success ? "🏆 Tahniah, Math Master!" : "💫 Cuba Lagi!";
+  document.getElementById("endText").textContent = success
+    ? `Cikgu bangga dengan kamu! Markah: ${score}. Syiling: ${coins}.`
+    : `Jangan putus asa! Markah kamu ${score}. Cuba lagi untuk sampai ke istana.`;
+  document.getElementById("endModal").style.display = "flex";
+}
+
+function rect(x,y,w,h,color) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x,y,w,h);
+}
+
+function drawBackground() {
+  const sky = ctx.createLinearGradient(0,0,0,H);
+  sky.addColorStop(0,"#42b9ff");
+  sky.addColorStop(1,"#d5f8ff");
+  rect(0,0,W,H,sky);
+
+  // Clouds
+  for (let i=0;i<7;i++) {
+    const x = ((i*190 - camera*.18) % 1100 + 1100) % 1100 - 70;
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+    ctx.arc(x,90+(i%3)*28,23,0,Math.PI*2);
+    ctx.arc(x+25,80+(i%3)*28,31,0,Math.PI*2);
+    ctx.arc(x+55,92+(i%3)*28,23,0,Math.PI*2);
+    ctx.fill();
+  }
+
+  // Distant hills
+  for (let i=0;i<9;i++) {
+    const x = i*150 - (camera*.3 % 150);
+    ctx.fillStyle = i%2 ? "#6fcf86" : "#49b77c";
+    ctx.beginPath();
+    ctx.moveTo(x,430);
+    ctx.lineTo(x+80,235+(i%3)*35);
+    ctx.lineTo(x+180,430);
+    ctx.fill();
+  }
+
+  // Castle at finish
+  const cx = WORLD - camera - 110;
+  if (cx > -160 && cx < W+100) {
+    rect(cx,330,90,100,"#e9dfce");
+    rect(cx+10,300,25,130,"#f6eee0");
+    rect(cx+55,300,25,130,"#f6eee0");
+    rect(cx+25,380,40,50,"#65412e");
+    ctx.fillStyle = "#ed5d65";
+    ctx.beginPath();
+    ctx.moveTo(cx+4,300); ctx.lineTo(cx+22,255);
+    ctx.lineTo(cx+40,300); ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(cx+50,300); ctx.lineTo(cx+68,255);
+    ctx.lineTo(cx+86,300); ctx.fill();
+  }
+}
+
+function drawPlatforms() {
+  platforms.forEach(p => {
+    const x = p.x-camera;
+    if (x+p.w < 0 || x > W) return;
+    rect(x,p.y,p.w,p.h,"#a85a2a");
+    rect(x,p.y,p.w,14,"#35bc4a");
+    rect(x,p.y,p.w,5,"#8df05e");
+    for (let bx=x+8;bx<x+p.w;bx+=32) {
+      rect(bx,p.y+26,25,4,"#d78343");
+      rect(bx+8,p.y+52,4,16,"#86431f");
+    }
+  });
+}
+
+function drawCoins() {
+  coinPositions.forEach((c,i) => {
+    if (collected.has(i)) return;
+    const x = c.x-camera;
+    if (x < -30 || x > W+30) return;
+    ctx.fillStyle = "#ffb900";
+    ctx.beginPath();
+    ctx.ellipse(x,c.y,12,16,0,0,Math.PI*2);
+    ctx.fill();
+    ctx.strokeStyle = "#fff16a";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    rect(x-2,c.y-8,4,16,"#fff16a");
+  });
+}
+
+function drawGates() {
+  gates.forEach((g,i) => {
+    const x = g.x-camera;
+    if (x < -50 || x > W+50) return;
+    rect(x-20, g.solved ? 335 : 350, 40, 45,
+         g.solved ? "#4caf50" : "#f4a62a");
+    ctx.strokeStyle = "#874a1c";
+    ctx.lineWidth = 3;
+    ctx.strokeRect(x-20,g.solved ? 335 : 350,40,45);
+    ctx.fillStyle = "white";
+    ctx.font = "bold 30px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText(g.solved ? "✓" : "?",x, g.solved ? 368 : 382);
+    ctx.font = "bold 13px Arial";
+    ctx.fillText("MISI "+(i+1),x,410);
+  });
+}
+
+function drawPlayer() {
+  const x = player.x-camera, y = player.y;
+  // Original cartoon adventurer
+  rect(x+5,y+12,21,22,"#1976d2"); // shirt
+  rect(x+4,y+30,9,12,"#174d9a");
+  rect(x+19,y+30,9,12,"#174d9a");
+  rect(x+1,y+39,13,5,"#5b321d");
+  rect(x+17,y+39,14,5,"#5b321d");
+  rect(x+6,y+1,21,17,"#f5c28b"); // face
+  rect(x+3,y,26,6,"#e83f46"); // hat
+  rect(x+9,y-4,17,6,"#e83f46");
+  rect(x+20,y+7,3,4,"#172c48"); // eye
+  rect(x+24,y+13,5,3,"#ad493b"); // smile
+  rect(x+1,y+18,6,12,"#f5c28b");
+  rect(x+26,y+18,6,12,"#f5c28b");
+}
+
+function draw() {
+  drawBackground();
+  drawPlatforms();
+  drawCoins();
+  drawGates();
+  drawPlayer();
+
+  // Finish flag
+  const fx = WORLD-45-camera;
+  if (fx > -20 && fx < W+20) {
+    rect(fx,335,5,95,"#69452b");
+    ctx.fillStyle="#ff4757";
+    ctx.beginPath();
+    ctx.moveTo(fx+5,338); ctx.lineTo(fx+43,350);
+    ctx.lineTo(fx+5,365); ctx.fill();
+  }
+}
+
+function update(dt) {
+  if (quizOpen || gameOver) return;
+
+  frame++;
+  const speed = 3.7;
+  player.vx = 0;
+
+  if (keys.ArrowLeft || keys.a || touch.left) player.vx = -speed;
+  if (keys.ArrowRight || keys.d || touch.right) player.vx = speed;
+
+  player.x += player.vx;
+  player.x = Math.max(0, Math.min(WORLD-player.w,player.x));
+
+  // Gravity and jump
+  player.vy += gravity;
+  player.vy = Math.min(player.vy,12);
+  const oldBottom = player.y + player.h;
+  player.y += player.vy;
+  player.grounded = false;
+
+  platforms.forEach(p => {
+    if (player.x+player.w > p.x && player.x < p.x+p.w &&
+        oldBottom <= p.y+5 && player.y+player.h >= p.y &&
+        player.vy >= 0) {
+      player.y = p.y-player.h;
+      player.vy = 0;
+      player.grounded = true;
+    }
+  });
+
+  // Fall into a gap
+  if (player.y > H+30) {
+    loseLife();
+  }
+
+  // Collect coins
+  coinPositions.forEach((c,i) => {
+    if (collected.has(i)) return;
+    const dx = player.x+player.w/2-c.x;
+    const dy = player.y+player.h/2-c.y;
+    if (Math.hypot(dx,dy)<29) {
+      collected.add(i);
+      coins++;
+      score+=10;
+      updateHUD();
+    }
+  });
+
+  // Math challenge triggers
+  const gate = gates[quizIndex];
+  if (gate && player.x+player.w >= gate.x-25) {
+    player.x = gate.x-player.w-27;
+    player.vx = 0;
+    showQuestion();
+  }
+
+  // Camera follows player
+  camera = Math.max(0,Math.min(WORLD-W,player.x-W*.35));
+
+  // Reach the castle after all challenges
+  if (quizIndex === gates.length && player.x > WORLD-100) {
+    endGame(true);
+  }
+}
+
+function loseLife() {
+  lives--;
+  updateHUD();
+  if (lives <= 0) {
+    endGame(false);
+  } else {
+    player.x = Math.max(0,player.x-120);
+    player.y = 250;
+    player.vy = 0;
+    document.getElementById("message").textContent =
+      "Awas! Kamu kehilangan satu nyawa.";
+  }
+}
+
+function loop(time) {
+  const dt = Math.min((time-lastTime)/16.67 || 1,2);
+  lastTime = time;
+
+  if (player) {
+    if (!quizOpen && !gameOver) update(dt);
+    draw();
+  }
+  requestAnimationFrame(loop);
+}
+
+document.addEventListener("keydown", e => {
+  if (["ArrowLeft","ArrowRight","ArrowUp"," ","ArrowDown"].includes(e.key))
+    e.preventDefault();
+  keys[e.key] = true;
+  if ((e.code === "Space" || e.key === "ArrowUp" || e.key === "w")
+      && player && player.grounded && !quizOpen && !gameOver) {
+    player.vy = -12.5;
+    player.grounded = false;
+  }
+});
+document.addEventListener("keyup", e => keys[e.key] = false);
+
+function holdButton(id, direction) {
+  const btn = document.getElementById(id);
+  const start = e => {
+    e.preventDefault();
+    touch[direction] = true;
+    try { btn.setPointerCapture(e.pointerId); } catch {}
+  };
+  const stop = e => {
+    e.preventDefault();
+    touch[direction] = false;
+  };
+  btn.addEventListener("pointerdown",start);
+  btn.addEventListener("pointerup",stop);
+  btn.addEventListener("pointercancel",stop);
+  btn.addEventListener("lostpointercapture",stop);
+}
+holdButton("left","left");
+holdButton("right","right");
+
+document.getElementById("jump").addEventListener("pointerdown",e => {
+  e.preventDefault();
+  if (player && player.grounded && !quizOpen && !gameOver) {
+    player.vy = -12.5;
+    player.grounded = false;
+  }
+});
+
+document.getElementById("difficulty").addEventListener("change",resetGame);
+
+resetGame();
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
