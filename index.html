@@ -200,17 +200,17 @@ function makeQuestion(level){
  let a,b,c,op,ans,q,tip;
  if(level===1){
    op=rand(2);a=rand(500);b=rand(300);
-   if(op===1){q=`Berapakah ${a} + ${b}?`;ans=a+b;tip="Susun nombor mengikut nilai tempat dan tambah.";}
-   else{if(b>a)[a,b]=[b,a];q=`Berapakah ${a} − ${b}?`;ans=a-b;tip="Susun nombor mengikut nilai tempat dan tolak.";}
+   if(op===1){q=Berapakah ${a} + ${b}?;ans=a+b;tip="Susun nombor mengikut nilai tempat dan tambah.";}
+   else{if(b>a)[a,b]=[b,a];q=Berapakah ${a} − ${b}?;ans=a-b;tip="Susun nombor mengikut nilai tempat dan tolak.";}
  }else if(level===2){
    op=rand(2);
-   if(op===1){a=rand(999);b=rand(9);q=`Berapakah ${a} × ${b}?`;ans=a*b;tip="Darab mengikut nilai tempat.";}
-   else{b=rand(9);ans=rand(99);a=b*ans;q=`Berapakah ${a} ÷ ${b}?`;tip="Gunakan sifir untuk mencari hasil bahagi.";}
+   if(op===1){a=rand(999);b=rand(9);q=Berapakah ${a} × ${b}?;ans=a*b;tip="Darab mengikut nilai tempat.";}
+   else{b=rand(9);ans=rand(99);a=b*ans;q=Berapakah ${a} ÷ ${b}?;tip="Gunakan sifir untuk mencari hasil bahagi.";}
  }else{
    op=rand(3);
-   if(op===1){a=rand(100)+10;b=rand(9)+2;c=rand(100);q=`Berapakah (${a} × ${b}) + ${c}?`;ans=a*b+c;tip="Selesaikan operasi dalam kurungan dahulu.";}
-   else if(op===2){a=rand(900)+100;b=rand(9)+2;q=`Berapakah ${a} + (${b} × 6)?`;ans=a+b*6;tip="Darab dahulu sebelum menambah.";}
-   else{b=rand(9)+2;ans=rand(50)+10;a=b*ans;q=`Berapakah ${a} ÷ ${b} + 12?`;ans+=12;tip="Bahagi dahulu sebelum menambah.";}
+   if(op===1){a=rand(100)+10;b=rand(9)+2;c=rand(100);q=Berapakah (${a} × ${b}) + ${c}?;ans=a*b+c;tip="Selesaikan operasi dalam kurungan dahulu.";}
+   else if(op===2){a=rand(900)+100;b=rand(9)+2;q=Berapakah ${a} + (${b} × 6)?;ans=a+b*6;tip="Darab dahulu sebelum menambah.";}
+   else{b=rand(9)+2;ans=rand(50)+10;a=b*ans;q=Berapakah ${a} ÷ ${b} + 12?;ans+=12;tip="Bahagi dahulu sebelum menambah.";}
  }
  return {q,ans,tip};
 }
@@ -218,7 +218,7 @@ function showQuestion(){
  if(quizIndex>=3||quizOpen||gameOver)return;
  quizOpen=true;wrongTried=false;
  currentQuestion=makeQuestion(Number($("difficulty").value));
- $("stageLabel").textContent=`Cabaran ${quizIndex+1} daripada 3`;
+ $("stageLabel").textContent=Cabaran ${quizIndex+1} daripada 3;
  $("question").textContent=currentQuestion.q;
  $("feedback").textContent="";$("retryBtn").hidden=true;
  $("quizModal").style.display="flex";drawAnswers();
@@ -400,7 +400,7 @@ function leaderboardHtml(rows){
  rows.forEach((r,i)=>{
    const medal=i===0?"🥇":i===1?"🥈":i===2?"🥉":String(i+1);
    const cls=(r.name===playerName&&r.avatar===playerAvatar)?" class='you'":"";
-   html+=`<tr${cls}><td>${medal}</td><td>${escapeHtml(r.avatar||"🎮")} ${escapeHtml(r.name||"Pemain")}${r.name===playerName&&r.avatar===playerAvatar?" (Anda)":""}</td><td>${Number(r.score)||0}</td><td>${Number(r.coins)||0}</td></tr>`;
+   html+=<tr${cls}><td>${medal}</td><td>${escapeHtml(r.avatar||"🎮")} ${escapeHtml(r.name||"Pemain")}${r.name===playerName&&r.avatar===playerAvatar?" (Anda)":""}</td><td>${Number(r.score)||0}</td><td>${Number(r.coins)||0}</td></tr>;
  });
  return html+"</tbody></table>";
 }
